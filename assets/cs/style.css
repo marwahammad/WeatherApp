@@ -1,0 +1,83 @@
+/* !----------------------- global --------------------------- */
+
+:root{
+    --navyGrayColor:#BFC1C8;
+    --grayColor:#757575;
+    --mainBackgroundColor:#1e202b;
+    --secondryBackgroundColor:#262936;
+    --navyBlueColor:#009AD8;
+    --whiteColor:#fff;
+    --headerMainColor:#2D303D;
+    --contentMainColor:#323544;
+    --headerSecondColor:#222530;
+    --borderColor:#3C3F4A;
+}
+body{
+    background-color: var(--mainBackgroundColor);
+    /* min-height: 100vh; */
+}
+.box{
+    
+    background-color: var(--mainBackgroundColor);
+}
+.box input::placeholder{
+    
+    color: var(--grayColor);
+}
+.box input{
+    background-color: transparent;
+    caret-color: var(--whiteColor);
+}
+.bttn{
+    background-color: var(--navyBlueColor);
+    color: var(--whiteColor);
+}
+.form-control:focus{
+    background-color: transparent;
+    box-shadow: none;
+    outline: 0;
+}
+.part-header-color{
+    background-color: var(--headerMainColor) ;
+}
+.part-bg-color{
+    background-color: var(--contentMainColor);
+}
+.part-second-header-color{
+    background-color: var(--headerSecondColor);
+}
+.part-second-bg-color{
+    background-color: var(--secondryBackgroundColor);
+}
+.row>*{
+    padding-inline: 0;
+}
+/* !----------------------- navbar --------------------------- */
+
+/* !----------------------- hero section --------------------------- */
+.hero-section{
+    background-image: url(../images/banner.png);
+    background-repeat: no-repeat;
+    min-height: 600px;
+}
+
+/* .hero-section .row .part:nth-child(odd) .forecast-header{
+    background-color: var(--headerMainColor);
+}
+.hero-section .row .part:nth-child(odd) .forecast-content{
+    background-color: var(--contentMainColor);
+}
+.hero-section .row .part:nth-child(even) .forecast-header{
+    background-color: var(--headerSecondColor);
+}
+.hero-section .row .part:nth-child(even) .forecast-content{
+    background-color: var(--secondryBackgroundColor);
+} */
+/* !----------------------- footer --------------------------- */
+footer{
+    background-color:var(--secondryBackgroundColor) ;
+}
+footer p{
+    color: var(--navyGrayColor);
+    font-size: .875rem;
+}
