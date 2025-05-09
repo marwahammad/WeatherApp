@@ -14,20 +14,31 @@ const weekDays = [
   "saturday",
 ];
 
+const mainCard = `
+     <div class="part col-sm-12 col-md-4 p-5 part-bg-color"></div>
 
+     <div class="part col-sm-12 col-md-4 p-5 part-second-bg-color"></div>
 
+     <div class="part col-sm-12 col-md-4 p-5 part-bg-color"></div>`;
 
 /** input event */
 
-const handleInput= () => {
- let region = searchInput.value;
-  displayData(region);
+const handleInput = () => {
+  let region = searchInput.value;
+  checkSearchInput(region);
+  // displayData(region);
 };
-searchInput.addEventListener("focus",handleInput )
-searchInput.addEventListener("input",handleInput )
+searchInput.addEventListener("focus", handleInput);
+searchInput.addEventListener("input", handleInput);
 
 /*fetch data*/
-const fetchApiData = async (baseUrl='',endPoint='',key='',inputValue='',days=0) => {
+const fetchApiData = async (
+  baseUrl = "",
+  endPoint = "",
+  key = "",
+  inputValue = "",
+  days = 0
+) => {
   try {
     const response = await fetch(
       `${baseUrl}${endPoint}?key=${key}&q=${inputValue}&days=${days}`
@@ -36,14 +47,20 @@ const fetchApiData = async (baseUrl='',endPoint='',key='',inputValue='',days=0) 
     console.log(data);
     return data;
   } catch (error) {
-     console.log(error);
+    console.log(error);
   }
 };
 
 /* display data */
 const displayData = async (region) => {
   try {
-    const apiData = await fetchApiData(baseUrl,endPoint,key,region,numOfDays);
+    const apiData = await fetchApiData(
+      baseUrl,
+      endPoint,
+      key,
+      region,
+      numOfDays
+    );
     // console.log(apiData.forecast.forecastday);
     const days = apiData.forecast.forecastday;
     let dataBox = ``;
@@ -53,71 +70,81 @@ const displayData = async (region) => {
       const dayName = weekDays[dateObj.getDay()];
       if (index === 0) {
         dataBox = `<div class="part col-sm-12 col-md-4 p-5 part-bg-color">
-              <div class="inner text-white">
-                <div
-                  class="forecast-header part-header-color p-3 d-flex justify-content-between"
-                >
-                  <span>${dayName}</span>
-                  <span>${day.date}</span>
-                </div>
-                <div class="forecast-content p-3">
-                  <div class="forecast-city">${apiData.location.name}</div>
-                  <div
-                    class="temp-degree d-flex justify-content-between align-items-center"
-                  >
-                    <span>${day.day.avgtemp_c} C</span>
-                    <span><img src="${day.day.condition.icon}" alt="${day.day.condition.text}" /></span>
-                  </div>
-                  <div class="temp-status">${day.day.condition.text}</div>
-                  <div class="temp-details d-flex gap-4">
-                    <div class="percentage">
-                      <img src="./assets/images/icon-umberella.png" alt="" />
-                      <span>20%</span>
-                    </div>
-                    <div class="distance">
-                      <img src="./assets/images/icon-compass.png" alt="" />
-                      <span>18km/h</span>
-                    </div>
-                    <div class="direction">
-                      <img src="./assets/images/icon-compass.png" alt="" />
-                      <span>East</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-`;
-      } else{
-
-          dataBox = `
-      
-               <div class="part col-sm-12 col-md-4 p-5 part-second-bg-color">
-                <div class="inner text-white text-center">
-                  <div
-                    class="forecast-header part-second-header-color d-flex justify-content-center p-3"
-                  >
-                    <span>${dayName}</span>
-                  </div>
-                  <div class="forecast-content p-3">
-                    <div class="forecast-icon">
-                      <img src="${day.day.condition.icon}" alt="${day.day.condition.text}" />
-                    </div>
-                    <div
-                      class="temp-degree d-flex flex-column justify-content-center"
-                    >
-                      <span>${day.day.maxtemp_c} c</span>
-                      <span>${day.day.mintemp_c} c</span>
-                    </div>
-                    <div class="temp-status">${day.day.condition.text}</div>
-                  </div>
-                </div>
-              </div>
-      `;
+        <div class="inner text-white">
+        <div
+        class="forecast-header part-header-color p-3 d-flex justify-content-between"
+        >
+        <span>${dayName}</span>
+        <span>${day.date}</span>
+        </div>
+        <div class="forecast-content p-3">
+        <div class="forecast-city">${apiData.location.name}</div>
+        <div
+        class="temp-degree d-flex justify-content-between align-items-center"
+        >
+        <span>${day.day.avgtemp_c} C</span>
+        <span><img src="${day.day.condition.icon}" alt="${day.day.condition.text}" /></span>
+        </div>
+        <div class="temp-status">${day.day.condition.text}</div>
+        <div class="temp-details d-flex gap-4">
+        <div class="percentage">
+        <img src="./assets/images/icon-umberella.png" alt="" />
+        <span>20%</span>
+        </div>
+        <div class="distance">
+        <img src="./assets/images/icon-compass.png" alt="" />
+        <span>18km/h</span>
+        </div>
+        <div class="direction">
+        <img src="./assets/images/icon-compass.png" alt="" />
+        <span>East</span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        `;
+      } else {
+        dataBox = `
+        
+        <div class="part col-sm-12 col-md-4 p-5 part-second-bg-color">
+        <div class="inner text-white text-center">
+        <div
+        class="forecast-header part-second-header-color d-flex justify-content-center p-3"
+        >
+        <span>${dayName}</span>
+        </div>
+        <div class="forecast-content p-3">
+        <div class="forecast-icon">
+        <img src="${day.day.condition.icon}" alt="${day.day.condition.text}" />
+        </div>
+        <div
+        class="temp-degree d-flex flex-column justify-content-center"
+        >
+        <span>${day.day.maxtemp_c} c</span>
+        <span>${day.day.mintemp_c} c</span>
+        </div>
+        <div class="temp-status">${day.day.condition.text}</div>
+        </div>
+        </div>
+        </div>
+        `;
       }
       container += dataBox;
     });
+    document.getElementById("error-msg").classList.add("d-none");
     displayWeatherBox.innerHTML = container;
   } catch (error) {
     console.log(error);
+    document.getElementById("error-msg").classList.remove("d-none");
+    displayWeatherBox.innerHTML = mainCard;
+  }
+};
+/* checkInputValue */
+const checkSearchInput = (region) => {
+  if(region===''){
+    document.getElementById("error-msg").classList.add("d-none");
+  }else{
+    displayData(region)
   }
 };
