@@ -11,7 +11,7 @@ const weekDays = [
   "wednesday",
   "thursday",
   "friday",
-  "sunday",
+  "saturday",
 ];
 
 
@@ -86,30 +86,31 @@ const displayData = async (region) => {
             </div>
 `;
       } else{
-        dataBox = `
-    
-             <div class="part col-sm-12 col-md-4 p-5 part-second-bg-color">
-              <div class="inner text-white text-center">
-                <div
-                  class="forecast-header part-second-header-color d-flex justify-content-center p-3"
-                >
-                  <span>${dayName}</span>
-                </div>
-                <div class="forecast-content p-3">
-                  <div class="forecast-icon">
-                    <img src="${day.day.condition.icon}" alt="${day.day.condition.text}" />
-                  </div>
+
+          dataBox = `
+      
+               <div class="part col-sm-12 col-md-4 p-5 part-second-bg-color">
+                <div class="inner text-white text-center">
                   <div
-                    class="temp-degree d-flex flex-column justify-content-center"
+                    class="forecast-header part-second-header-color d-flex justify-content-center p-3"
                   >
-                    <span>${day.day.maxtemp_c} c</span>
-                    <span>${day.day.mintemp_c} c</span>
+                    <span>${dayName}</span>
                   </div>
-                  <div class="temp-status">${day.day.condition.text}</div>
+                  <div class="forecast-content p-3">
+                    <div class="forecast-icon">
+                      <img src="${day.day.condition.icon}" alt="${day.day.condition.text}" />
+                    </div>
+                    <div
+                      class="temp-degree d-flex flex-column justify-content-center"
+                    >
+                      <span>${day.day.maxtemp_c} c</span>
+                      <span>${day.day.mintemp_c} c</span>
+                    </div>
+                    <div class="temp-status">${day.day.condition.text}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-    `;
+      `;
       }
       container += dataBox;
     });
