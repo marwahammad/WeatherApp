@@ -19,10 +19,12 @@ const weekDays = [
 
 /** input event */
 
-searchInput.addEventListener("input", () => {
+const handleInput= () => {
  let region = searchInput.value;
   displayData(region);
-});
+};
+searchInput.addEventListener("change",handleInput )
+searchInput.addEventListener("input",handleInput )
 
 /*fetch data*/
 const fetchApiData = async (baseUrl='',endPoint='',key='',inputValue='',days=0) => {
