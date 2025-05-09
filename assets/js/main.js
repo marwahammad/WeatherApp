@@ -23,7 +23,7 @@ const handleInput= () => {
  let region = searchInput.value;
   displayData(region);
 };
-searchInput.addEventListener("change",handleInput )
+searchInput.addEventListener("focus",handleInput )
 searchInput.addEventListener("input",handleInput )
 
 /*fetch data*/
